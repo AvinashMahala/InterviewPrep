@@ -58,5 +58,3 @@
 
 20. **How do you ensure that third-party vendors comply with HIPAA?**
     - Ensuring third-party compliance involves conducting due diligence, having a signed BAA, and regularly monitoring and auditing the vendor’s compliance.
-
-These questions should help you prepare for interviews that focus on HIPAA compliance, ensuring that you understand the key aspects and requirements of this important regulation. If you need further details or explanations on any of these questions, feel free to ask!
