@@ -1,0 +1,58 @@
+Back End Developer
+Submitted resume
+Atlas Lift Tech · California, United States · 3 weeks ago · Over 100 applicants
+$100K/yr - $130K/yr  Remote  Full-timeMatches your job preferences, job type is Full-time.
+201-500 employees
+10 of 10 skills match your profile - you may be a good fit
+Response time is typically 4 days
+Learn more
+No longer accepting applications
+Job activity
+Resume downloaded
+1 week ago
+Application viewed
+1 week ago
+Application submitted
+2 weeks ago
+Share
+Show more options
+About the job
+About the Role:
+
+This is a ground-floor opportunity for the right person to be a key player in the tech department. During this journey, you will find opportunities to grow and work on the leading edge of technology. Your work will directly contribute to saving and improving people’s lives.
+ 
+
+Duties and Responsibilities:
+
+● Responsible for participation in the requirement discussion, working with internal and external team members to understand business requirements
+● Maintain and add new features to our enterprise Xamarin IOS application, with Offline Sync
+● REST API, Graph QL API Development
+● Azure Devops. Pipelines and deployments
+● Responsible for preparing design documents, unit test documents, and other artifacts as per business needs
+● Responsible for providing support for existing production applications, troubleshooting and resolving issues
+● Ensure all technology is in compliance with regulatory standards as HIPAA
+● Should be able to manage the work independently and provide timely communication for smooth execution of the project
+ 
+Skills and Qualifications:
+
+● 5+ years of experience in software development working with large enterprise applications
+● 4+ years of experience in C# and ASP.Net Core, Entity Framework, Web API
+● Experience developing desktop and mobile applications
+● Experience designing and implementing REST APIs and experience with Graph QL
+● Experience in Azure DevOps, CI/CD pipelines, Blob storage, App Services, Azure Functions
+● Have experience with distributed storage and database systems, including MySQL Server, Azure SQL Server
+● Excellent interpersonal skills and ability to work well with all levels of engineers/staff
+● Ability to challenge the status quo, be a self-starter, and think outside the box
+● Ability to work under pressure and be flexible on the schedule
+● Ability to travel to designated locations as needed
+ 
+ 
+Preferred Qualifications:
+
+● Have expertise in one or more object-oriented languages, including Python, C#, Go, Java, or C++, and an eagerness to learn more
+● Bachelor's/Master's degree in CS or equivalent
+● Familiarity with healthcare standards, including HL7, DICOM, IHE Profiles, and FHIR
+● Exposure to cloud platforms, like AWS and Azure.
+● Integration experience is a plus
+ 
+Atlas Lift Tech, Inc. provides equal employment opportunities to all qualified applicants without regard to race, sex, sexual orientation, gender identity, national origin, color, age, religion, protected veteran or disability status or genetic information.
