@@ -170,3 +170,94 @@ No, if a method is declared as `abstract`, the class containing the method must 
 
 **Conclusion:**
 We have covered the key concepts of object-oriented programming and their applications in C#. Understanding these concepts is crucial for technical interviews. Remember, preparation is key to success. Happy learning and job hunting! Visit questpond.com for more resources and support.
+
+
+
+### Question 01: Why do we need OOP?
+Object-oriented programming (OOP) helps in modeling software based on real-world objects. This approach simplifies complex software development by making the system more modular, flexible, and maintainable. For example, in a hospital management system, entities like `Patient` and `Doctor` can be modeled as classes with specific attributes and behaviors. This makes the code more intuitive and easier to manage.
+
+### Question 02: What are the important pillars in OOP?
+The four important pillars of OOP are:
+1. **Abstraction:** Showing only the necessary details to the outside world.
+2. **Polymorphism:** Allowing objects to be treated as instances of their parent class.
+3. **Inheritance:** Allowing a new class to inherit properties and methods from an existing class.
+4. **Encapsulation:** Hiding the internal state and requiring all interaction to be performed through an object's methods.
+
+### Question 03: What is a Class and Object?
+- **Class:** A blueprint or template for creating objects. It defines properties and methods common to all objects of that type.
+- **Object:** An instance of a class. It represents an entity with state and behavior defined by the class.
+
+### Question 04: Abstraction vs Encapsulation?
+- **Abstraction:** Focuses on exposing only the necessary aspects of an object while hiding the complex implementation details. It's a design principle.
+- **Encapsulation:** Focuses on restricting access to certain details of an object and bundling data with the methods that operate on that data. It's a coding principle used to implement abstraction.
+
+### Question 05: Explain Inheritance?
+Inheritance is a mechanism where a new class, known as a derived or child class, inherits properties and behaviors (methods) from an existing class, known as a base or parent class. This promotes code reusability.
+
+### Question 06: Explain Virtual Keyword?
+The virtual keyword is used in a base class to allow derived classes to override a method. This enables polymorphism where a method in the derived class can provide a specific implementation that overrides the base class method.
+
+### Question 07: What is Overriding?
+Overriding allows a derived class to provide a specific implementation of a method that is already defined in its base class using the `override` keyword.
+
+### Question 08: Explain Overloading?
+Overloading allows multiple methods in the same class to have the same name but different parameters (signatures).
+
+### Question 09: Overloading vs Overriding?
+- **Overloading:** In the same class, having multiple methods with the same name but different signatures.
+- **Overriding:** In a parent-child relationship, redefining a method in the child class that is already defined in the parent class.
+
+### Question 10: What is Polymorphism?
+Polymorphism is the ability of an object to take many forms. It allows methods to do different things based on the object it is acting upon.
+
+### Question 11: Can Polymorphism work without Inheritance?
+No, inheritance is essential to achieve polymorphism. Polymorphism relies on a base class reference to point to a derived class object.
+
+### Question 12: Explain Static vs Dynamic Polymorphism?
+- **Static Polymorphism (Compile-time):** Implemented using method overloading.
+- **Dynamic Polymorphism (Run-time):** Implemented using method overriding.
+
+### Question 13: Explain Operator Overloading?
+Operator overloading allows you to redefine the way operators work with user-defined types, enabling custom behavior for operators like `+`, `-`, etc.
+
+### Question 14: How to do Custom Operator Overloading?
+To perform custom operator overloading, you need to define the operator keyword followed by the operator symbol and the required logic in a static method within the class.
+
+### Question 15: Why do we need Abstract Classes?
+Abstract classes are used to define a template for other classes. They can contain both complete and incomplete methods. Complete methods provide shared functionality, while incomplete methods (abstract methods) must be implemented by derived classes. This helps in defining a common interface for all the subclasses while allowing specific implementations.
+
+### Question 16: Are Abstract methods Virtual?
+Yes, abstract methods are implicitly virtual. They must be overridden in non-abstract derived classes.
+
+### Question 17: Can we create an instance of Abstract Classes?
+No, you cannot create an instance of an abstract class directly. Abstract classes are meant to be inherited by other classes.
+
+### Question 18: Is it compulsory to implement Abstract Methods?
+Yes, it is compulsory for non-abstract derived classes to implement all abstract methods of the base abstract class.
+
+### Question 19: Why simple base class cannot replace Abstract Classes?
+A simple base class cannot enforce the implementation of its methods in derived classes. An abstract class, on the other hand, ensures that any derived class provides implementations for all its abstract methods, ensuring a consistent interface.
+
+### Question 20: Explain Interface and Why do we need it?
+An interface is a contract that defines a set of methods and properties that the implementing class must provide. Interfaces are used to achieve multiple inheritances and to define capabilities that can be shared across different classes.
+
+### Question 21: Can we write logic in Interface?
+No, interfaces cannot contain any implementation logic. They can only contain method signatures and properties.
+
+### Question 22: Can we define methods as private in Interface?
+No, all members of an interface are implicitly public and cannot have access modifiers like private or protected.
+
+### Question 23: To change Interface what's the best practice?
+The best practice to change an interface is to create a new interface and implement it in the necessary classes. This approach avoids breaking existing code that depends on the old interface.
+
+### Question 24: Explain Multiple Inheritance in Interfaces?
+Multiple inheritances are achieved in interfaces by allowing a class to implement multiple interfaces. This enables a class to inherit behaviors and capabilities from more than one interface.
+
+### Question 25: Explain Interface Segregation Principle?
+The Interface Segregation Principle (ISP) states that no client should be forced to depend on methods it does not use. It promotes the creation of smaller, more specific interfaces rather than a single, large, general-purpose interface.
+
+### Question 26: Can we create instance of Interface?
+No, you cannot create an instance of an interface directly. An interface can only be implemented by a class or another interface.
+
+### Question 27: Can we do multiple inheritance of Interface?
+Yes, a class can implement multiple interfaces, thereby achieving multiple inheritances. This allows a class to inherit and implement methods and properties from multiple sources.
