@@ -173,9 +173,7 @@
 **Scenario 1: I have private servers on my premises and have distributed some workloads on the private cloud. What is this architecture called?**
 - **Answer**: Hybrid Cloud, combining private and public cloud resources.
 
-**Scenario 2: Your business prefers to use its email address and domain to send and receive compliant emails. What service do you recommend
-
- to implement this easily and budget-friendly?**
+**Scenario 2: Your business prefers to use its email address and domain to send and receive compliant emails. What service do you recommend to implement this easily and budget-friendly?**
 - **Answer**: Amazon Simple Email Service (SES), a cloud-based email sending service.
 
 **Scenario 3: On an EC2 instance, an application is active. Once the CPU usage hits 80%, you must reduce the load on it. What strategy do you use to complete this task?**
