@@ -1211,6 +1211,503 @@ def shortest_path(graph, start, end):
 ---
 
 
+Here’s a concise yet comprehensive Python example for a **CoderPad-style interview** that demonstrates **OOP principles**, **SOLID principles**, **design patterns**, and **best software development practices**. The example implements a basic **Order Processing System** using the **Strategy Design Pattern** while adhering to SOLID principles.
+
+---
+
+### **Order Processing System Example**
+```python
+from abc import ABC, abstractmethod
+
+# Open/Closed Principle: Easily extendable without modifying existing code
+class PaymentStrategy(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+class CreditCardPayment(PaymentStrategy):
+    def __init__(self, card_number):
+        self.card_number = card_number
+
+    def pay(self, amount):
+        print(f"Paid ${amount} using Credit Card ending in {self.card_number[-4:]}.")
+
+class PayPalPayment(PaymentStrategy):
+    def __init__(self, email):
+        self.email = email
+
+    def pay(self, amount):
+        print(f"Paid ${amount} using PayPal account {self.email}.")
+
+# Single Responsibility Principle: Order class handles only order-related tasks
+class Order:
+    def __init__(self):
+        self.items = []
+        self.total_cost = 0
+
+    def add_item(self, item_name, price):
+        self.items.append((item_name, price))
+        self.total_cost += price
+
+    def show_order(self):
+        print("Order Summary:")
+        for item, price in self.items:
+            print(f"- {item}: ${price}")
+        print(f"Total: ${self.total_cost}")
+
+# Dependency Inversion Principle: High-level module depends on abstraction
+class OrderProcessor:
+    def __init__(self, payment_strategy: PaymentStrategy):
+        self.payment_strategy = payment_strategy
+
+    def process_order(self, order: Order):
+        order.show_order()
+        self.payment_strategy.pay(order.total_cost)
+
+# Factory Method Pattern: To dynamically create payment strategies
+class PaymentFactory:
+    @staticmethod
+    def create_payment_method(method_type, **kwargs):
+        if method_type == "credit_card":
+            return CreditCardPayment(kwargs["card_number"])
+        elif method_type == "paypal":
+            return PayPalPayment(kwargs["email"])
+        else:
+            raise ValueError("Unsupported payment method")
+
+# Best Practices: Encapsulation, Separation of Concerns, and Readable Code
+if __name__ == "__main__":
+    # Create an order
+    order = Order()
+    order.add_item("Laptop", 1200)
+    order.add_item("Mouse", 50)
+
+    # Choose a payment method
+    payment_method = PaymentFactory.create_payment_method(
+        method_type="credit_card", card_number="1234567890123456"
+    )
+
+    # Process the order
+    processor = OrderProcessor(payment_method)
+    processor.process_order(order)
+```
+
+---
+
+### **Concepts Demonstrated**
+
+1. **OOP Principles**:
+   - **Encapsulation**: Classes hide internal implementation details (e.g., `Order` and `PaymentStrategy`).
+   - **Abstraction**: `PaymentStrategy` provides a generalized interface for different payment methods.
+   - **Polymorphism**: Different payment methods (`CreditCardPayment`, `PayPalPayment`) implement the same `pay` method differently.
+   - **Inheritance**: `PaymentStrategy` is the base class for specific payment strategies.
+
+2. **SOLID Principles**:
+   - **Single Responsibility Principle (SRP)**: Each class has one reason to change (e.g., `Order` handles orders, `OrderProcessor` processes them).
+   - **Open/Closed Principle (OCP)**: Easily add new payment methods without modifying existing code.
+   - **Liskov Substitution Principle (LSP)**: Any subclass of `PaymentStrategy` can replace its parent without breaking functionality.
+   - **Interface Segregation Principle (ISP)**: Classes depend only on the methods they use (e.g., `OrderProcessor` depends only on the `PaymentStrategy` interface).
+   - **Dependency Inversion Principle (DIP)**: High-level modules (`OrderProcessor`) depend on abstractions (`PaymentStrategy`), not concrete implementations.
+
+3. **Design Pattern**:
+   - **Strategy Pattern**: Different payment methods are interchangeable at runtime.
+   - **Factory Method**: Dynamically creates appropriate payment strategies.
+
+4. **Industry Best Practices**:
+   - **Readability**: Clear naming and modular functions.
+   - **Scalability**: Easily extensible with new payment methods.
+   - **Error Handling**: Raises exceptions for unsupported payment methods.
+   - **Separation of Concerns**: Logical separation between order, payment, and processing.
+
+---
+
+### **Sample Output**
+```plaintext
+Order Summary:
+- Laptop: $1200
+- Mouse: $50
+Total: $1250
+Paid $1250 using Credit Card ending in 3456.
+```
+
+---
+
+Here’s the **Order Processing System Example** implemented in **C#**, showcasing **OOP principles**, **SOLID principles**, **design patterns**, and **best practices** in a concise and clear way:
+
+---
+
+### **Order Processing System in C#**
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+// Open/Closed Principle: PaymentStrategy can be extended for new payment types
+public interface IPaymentStrategy
+{
+    void Pay(decimal amount);
+}
+
+public class CreditCardPayment : IPaymentStrategy
+{
+    private readonly string _cardNumber;
+
+    public CreditCardPayment(string cardNumber)
+    {
+        _cardNumber = cardNumber;
+    }
+
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine($"Paid ${amount} using Credit Card ending in {_cardNumber.Substring(_cardNumber.Length - 4)}.");
+    }
+}
+
+public class PayPalPayment : IPaymentStrategy
+{
+    private readonly string _email;
+
+    public PayPalPayment(string email)
+    {
+        _email = email;
+    }
+
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine($"Paid ${amount} using PayPal account {_email}.");
+    }
+}
+
+// Single Responsibility Principle: Order only manages order details
+public class Order
+{
+    public List<(string ItemName, decimal Price)> Items { get; private set; }
+    public decimal TotalCost { get; private set; }
+
+    public Order()
+    {
+        Items = new List<(string, decimal)>();
+        TotalCost = 0;
+    }
+
+    public void AddItem(string itemName, decimal price)
+    {
+        Items.Add((itemName, price));
+        TotalCost += price;
+    }
+
+    public void DisplayOrder()
+    {
+        Console.WriteLine("Order Summary:");
+        foreach (var (itemName, price) in Items)
+        {
+            Console.WriteLine($"- {itemName}: ${price}");
+        }
+        Console.WriteLine($"Total: ${TotalCost}");
+    }
+}
+
+// Dependency Inversion Principle: OrderProcessor depends on the IPaymentStrategy abstraction
+public class OrderProcessor
+{
+    private readonly IPaymentStrategy _paymentStrategy;
+
+    public OrderProcessor(IPaymentStrategy paymentStrategy)
+    {
+        _paymentStrategy = paymentStrategy;
+    }
+
+    public void ProcessOrder(Order order)
+    {
+        order.DisplayOrder();
+        _paymentStrategy.Pay(order.TotalCost);
+    }
+}
+
+// Factory Method Pattern: Creates payment strategies dynamically
+public static class PaymentFactory
+{
+    public static IPaymentStrategy CreatePaymentMethod(string methodType, Dictionary<string, string> options)
+    {
+        return methodType.ToLower() switch
+        {
+            "credit_card" => new CreditCardPayment(options["cardNumber"]),
+            "paypal" => new PayPalPayment(options["email"]),
+            _ => throw new NotSupportedException("Unsupported payment method")
+        };
+    }
+}
+
+// Best Practices: Encapsulation, Separation of Concerns, and Readable Code
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Create an order
+        var order = new Order();
+        order.AddItem("Laptop", 1200);
+        order.AddItem("Mouse", 50);
+
+        // Choose a payment method
+        var paymentMethod = PaymentFactory.CreatePaymentMethod(
+            "credit_card", 
+            new Dictionary<string, string> { { "cardNumber", "1234567890123456" } }
+        );
+
+        // Process the order
+        var processor = new OrderProcessor(paymentMethod);
+        processor.ProcessOrder(order);
+    }
+}
+```
+
+---
+
+### **Concepts Demonstrated**
+
+1. **OOP Principles**:
+   - **Encapsulation**: Each class hides its internal details (e.g., `Order` manages items and totals).
+   - **Abstraction**: `IPaymentStrategy` abstracts the payment mechanism.
+   - **Polymorphism**: Multiple payment types (`CreditCardPayment`, `PayPalPayment`) implement the same interface.
+   - **Inheritance**: Classes implementing the interface adhere to the contract.
+
+2. **SOLID Principles**:
+   - **Single Responsibility Principle (SRP)**: `Order` manages orders, `OrderProcessor` handles processing, and payment classes manage payment logic.
+   - **Open/Closed Principle (OCP)**: Add new payment types without changing existing classes.
+   - **Liskov Substitution Principle (LSP)**: All implementations of `IPaymentStrategy` can replace the interface without breaking the system.
+   - **Interface Segregation Principle (ISP)**: `OrderProcessor` depends only on `IPaymentStrategy`, not specific payment implementations.
+   - **Dependency Inversion Principle (DIP)**: High-level `OrderProcessor` depends on the abstraction (`IPaymentStrategy`), not concrete implementations.
+
+3. **Design Pattern**:
+   - **Strategy Pattern**: Payment behavior is defined at runtime.
+   - **Factory Method**: Creates the correct payment strategy based on input.
+
+4. **Best Practices**:
+   - **Readability**: Clean, modular methods and classes.
+   - **Error Handling**: Throws an exception for unsupported payment methods.
+   - **Scalability**: Easily extendable with new payment strategies.
+
+---
+
+### **Sample Output**
+```plaintext
+Order Summary:
+- Laptop: $1200
+- Mouse: $50
+Total: $1250
+Paid $1250 using Credit Card ending in 3456.
+```
+
+---
+
+### **How This Example Impresses the Interviewer**
+- **Demonstrates Knowledge of Design Principles:** Adheres to SOLID principles and uses a design pattern (Strategy).
+- **Modularity and Extensibility:** Easily add new features without modifying existing code.
+- **Industry Best Practices:** Includes error handling, clear separation of concerns, and reusable components.
+- **Concise Yet Complete:** Covers multiple software engineering concepts in a small example.
+
+
+
+
+Here’s an example of an **Order Management System** using the **Repository Pattern** in **C#**. This demonstrates the **Repository Pattern**, **SOLID principles**, and **industry best practices**. The example is concise and uses a repository abstraction for managing data access.
+
+---
+
+### **Order Management System with Repository Pattern**
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+// Open/Closed Principle: Extendable repositories for different entities
+public interface IRepository<T>
+{
+    T GetById(int id);
+    IEnumerable<T> GetAll();
+    void Add(T entity);
+    void Update(T entity);
+    void Delete(int id);
+}
+
+// Concrete implementation of Repository for Order
+public class OrderRepository : IRepository<Order>
+{
+    private readonly Dictionary<int, Order> _orderStorage = new();
+
+    public Order GetById(int id) => _orderStorage.ContainsKey(id) ? _orderStorage[id] : null;
+
+    public IEnumerable<Order> GetAll() => _orderStorage.Values;
+
+    public void Add(Order order)
+    {
+        if (_orderStorage.ContainsKey(order.Id))
+        {
+            throw new InvalidOperationException("Order with the same ID already exists.");
+        }
+        _orderStorage[order.Id] = order;
+    }
+
+    public void Update(Order order)
+    {
+        if (!_orderStorage.ContainsKey(order.Id))
+        {
+            throw new KeyNotFoundException("Order not found.");
+        }
+        _orderStorage[order.Id] = order;
+    }
+
+    public void Delete(int id)
+    {
+        if (!_orderStorage.ContainsKey(id))
+        {
+            throw new KeyNotFoundException("Order not found.");
+        }
+        _orderStorage.Remove(id);
+    }
+}
+
+// Entity: Order
+public class Order
+{
+    public int Id { get; set; }
+    public string CustomerName { get; set; }
+    public List<OrderItem> Items { get; set; }
+    public decimal TotalCost => ComputeTotalCost();
+
+    public Order()
+    {
+        Items = new List<OrderItem>();
+    }
+
+    private decimal ComputeTotalCost()
+    {
+        decimal total = 0;
+        foreach (var item in Items)
+        {
+            total += item.Price * item.Quantity;
+        }
+        return total;
+    }
+}
+
+// Entity: OrderItem
+public class OrderItem
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public int Quantity { get; set; }
+}
+
+// Dependency Inversion Principle: Service depends on the abstraction (IRepository)
+public class OrderService
+{
+    private readonly IRepository<Order> _orderRepository;
+
+    public OrderService(IRepository<Order> orderRepository)
+    {
+        _orderRepository = orderRepository;
+    }
+
+    public void CreateOrder(Order order)
+    {
+        _orderRepository.Add(order);
+        Console.WriteLine($"Order {order.Id} for {order.CustomerName} created successfully.");
+    }
+
+    public void PrintOrderDetails(int orderId)
+    {
+        var order = _orderRepository.GetById(orderId);
+        if (order == null)
+        {
+            Console.WriteLine("Order not found.");
+            return;
+        }
+
+        Console.WriteLine($"Order ID: {order.Id}");
+        Console.WriteLine($"Customer: {order.CustomerName}");
+        Console.WriteLine("Items:");
+        foreach (var item in order.Items)
+        {
+            Console.WriteLine($"- {item.Name}: ${item.Price} x {item.Quantity}");
+        }
+        Console.WriteLine($"Total Cost: ${order.TotalCost}");
+    }
+}
+
+// Best Practices: Encapsulation, Abstraction, Readable Code
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Dependency Injection: Use OrderRepository as the implementation
+        var repository = new OrderRepository();
+        var orderService = new OrderService(repository);
+
+        // Create an order
+        var order = new Order
+        {
+            Id = 1,
+            CustomerName = "John Doe",
+            Items = new List<OrderItem>
+            {
+                new OrderItem { Name = "Laptop", Price = 1200, Quantity = 1 },
+                new OrderItem { Name = "Mouse", Price = 50, Quantity = 2 }
+            }
+        };
+
+        // Add and display the order
+        orderService.CreateOrder(order);
+        orderService.PrintOrderDetails(order.Id);
+    }
+}
+```
+
+---
+
+### **Concepts Demonstrated**
+
+1. **Repository Pattern**:
+   - Encapsulates the data access logic (`OrderRepository`).
+   - Decouples the business logic (`OrderService`) from the data storage mechanism.
+
+2. **OOP Principles**:
+   - **Encapsulation**: Data storage is hidden inside the repository.
+   - **Abstraction**: The `IRepository<T>` interface abstracts the data operations.
+   - **Polymorphism**: The `OrderService` depends on `IRepository<T>`, enabling flexible implementations.
+
+3. **SOLID Principles**:
+   - **Single Responsibility Principle (SRP)**: Each class has a single, focused responsibility.
+   - **Open/Closed Principle (OCP)**: Easily extendable repository implementation for new entities.
+   - **Dependency Inversion Principle (DIP)**: The `OrderService` depends on the abstraction (`IRepository<T>`), not the concrete implementation.
+
+4. **Best Practices**:
+   - **Error Handling**: Throws exceptions for invalid operations.
+   - **Dependency Injection**: Repository is passed as a dependency to the service.
+   - **Readable Code**: Classes and methods are logically structured and named.
+
+---
+
+### **Sample Output**
+```plaintext
+Order 1 for John Doe created successfully.
+Order ID: 1
+Customer: John Doe
+Items:
+- Laptop: $1200 x 1
+- Mouse: $50 x 2
+Total Cost: $1300
+```
+
+---
+
+### **Why This Example Stands Out**
+- **Scalability**: Easily extendable for new entities (e.g., `CustomerRepository`, `ProductRepository`).
+- **Separation of Concerns**: Clean separation between data access, business logic, and entities.
+- **Demonstrates Industry-Standard Practices**: Repository pattern is widely used in enterprise applications.
+
+
+
+
 
 
 
