@@ -1,4 +1,3 @@
-Here’s a curated set of common **CoderPad** questions with their answers. These examples cover areas such as algorithms, data structures, and programming concepts that are typically tested in interviews.
 
 ---
 
